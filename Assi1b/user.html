@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Users</title>
+</head>
+<body>
+    <h2>Registered Users</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="userList"></tbody>
+    </table>
+
+    <br>
+    <a href="registrationpage.html">Go Back</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let userList = document.getElementById("userList");
+
+            users.forEach(user => {
+                let row = `<tr><td>${user.name}</td><td>${user.email}</td></tr>`;
+                userList.innerHTML += row;
+            });
+        });
+    </script>
+</body>
+</html>
